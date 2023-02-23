@@ -1,4 +1,9 @@
 @echo off
+:: --------
+:: DISCLAIMER: THIS SCRIPT IS MADE FOR HOMELAB PURPOSES ONLY!
+:: Any usage outside of educational usage is highly discouraged and illegal.
+:: --------
+
 call admin_Check
 
 SET Win10Pro=W269N-WFGWX-YVC9B-4J6C9-T83GX
