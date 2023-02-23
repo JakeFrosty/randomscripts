@@ -1,7 +1,7 @@
 @echo off
 :: --------
 :: DISCLAIMER: THIS SCRIPT IS MADE FOR HOMELAB PURPOSES ONLY!
-:: Any usage outside of educational usage is highly discouraged and illegal.
+:: Any usage outside of educational purposes is highly discouraged and illegal according to Microsoft TOS.
 :: --------
 
 call admin_Check
