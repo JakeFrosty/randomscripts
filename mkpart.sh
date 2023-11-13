@@ -48,7 +48,7 @@ if [ "$3" != "wipe" ]; then
         exit 1
     fi
 elif [ "$3" = "wipe" ]; then
-    wipefs --all --force ${DEVICE}*
+    wipefs -a ${DEVICE}*
 fi
 
 # Create a new partition
