@@ -1,9 +1,4 @@
 @echo off
-:: --------
-:: DISCLAIMER: THIS SCRIPT IS MADE FOR HOMELAB PURPOSES ONLY!
-:: Any usage outside of educational purposes is highly discouraged and illegal according to Microsoft TOS.
-:: --------
-
 call admin_Check
 
 SET Win10Pro=W269N-WFGWX-YVC9B-4J6C9-T83GX
@@ -43,18 +38,25 @@ SET Win7Ent=33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
 	IF ERRORLEVEL 3 SET WINVER=%Win10Edu%
 	IF ERRORLEVEL 2 SET WINVER=%Win10Home%
 	IF ERRORLEVEL 1 SET WINVER=%Win10Pro%
+	echo %WINVER%
 	GOTO :activation_Function
 :activation_Function
 	slmgr /upk
-	slmgr.vbs /cpky
+	slmgr /cpky
 	slmgr /ckms
-	slmgr.vbs /ckms
-	slmgr /upk
 	slmgr /ipk %WINVER%
-	:: IF kms8.msguides.com doesn't work
-	:: try these instead:
-	:: s9.us.to or kms.teevee.asia
-	slmgr /skms kms8.msguides.com
+    echo 1. kms8.msguides.com
+    echo 2. s9.us.to
+    echo 3. kms.teevee.asia
+    echo 4. custom
+    CHOICE /C 1234 /M "Choose kmsserver (or your own)"
+    IF ERRORLEVEL 4 (SET /p KEYSRV="keyserver: ") else (
+    IF ERRORLEVEL 3 SET KEYSRV=s9.us.to
+    IF ERRORLEVEL 2 SET KEYSRV=kms.teevee.asia
+    IF ERRORLEVEL 1 SET KEYSRV=kms8.msguides.com
+)
+	echo %KEYSRV%
+	slmgr /skms %KEYSRV%
 	slmgr /ato
 	echo %WINVER%
 :End
